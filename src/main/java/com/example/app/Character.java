@@ -12,8 +12,8 @@ public class Character extends Rectangle {
     Random randomHeight = new Random();
 
     // Generate a random number that is either 1 or -1
-    int randomWidthNum = randomWidth.nextBoolean() ? 1 : -1;
-    int randomHeightNum = randomHeight.nextBoolean() ? 1 : -1;
+    int randomWidthNum = randomWidth.nextBoolean() ? 5 : -5;
+    int randomHeightNum = randomHeight.nextBoolean() ? 5 : -5;
 
 
     private double dx = randomWidthNum; // Initial horizontal velocity
@@ -32,14 +32,13 @@ public class Character extends Rectangle {
 
 
     public void bounce(Bounds bounds){
+        double x = getTranslateX();
+        double y = getTranslateY();
 
-        double x = getTranslateX(); // Use getTranslateX() to get the character's X position
-        double y = getTranslateY(); // Use getTranslateY() to get the character's Y position
-
-        if (x + getWidth() >= bounds.getWidth() || x <= 0) {
+        if (x + getWidth() * 2 >= bounds.getWidth() || x + getWidth() <= 0) {
             dx = -dx;
         }
-        if (y + getHeight() >= bounds.getHeight() || y <= 0) {
+        if (y + getHeight() * 2 >= bounds.getHeight() || y + getHeight() <= 0) {
             dy = -dy;
         }
     }
